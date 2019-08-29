@@ -1,4 +1,7 @@
-// TODO: Rejigger the data structures so setScene can turn accessories off
+// TODO:
+// * Rejigger the data structures so setScene can turn accessories off
+// * Figure out how to make checkScene() update regularly without screwing
+//   up the scene buttons
 
 var sceneAccessories = {
     "good-morning": ["tv-room-switch", "office-who-lamp", "tv-room-couch-corner", "tv-room-tv-corner", "office-floor-lamp", "great-room-book-case"],
@@ -31,6 +34,24 @@ homeButtons.forEach(button => {
     });
 });
 
+function setScene(sceneID) {
+    var sceneToBeSet = sceneAccessories[sceneID];
+    if (document.getElementById(sceneID).classList.contains("on")) {
+
+        sceneToBeSet.forEach(scene => {
+            document.getElementById(scene).classList.add("on");
+            document.getElementById(scene).lastElementChild.innerText = "On";
+        });
+
+    } else {
+
+        sceneToBeSet.forEach(scene => {
+            document.getElementById(scene).classList.remove("on");
+            document.getElementById(scene).lastElementChild.innerText = "Off";
+        });
+    }
+}
+
 function checkScene() {
 
     //  This function compares html tags with the classes of "on" and "accessory" against the list of IDs for the given array and turns the scene button on and off depending on whether they match.
@@ -60,22 +81,4 @@ function checkScene() {
             document.getElementById(scene.id).classList.remove("on");
         }
     });
-}
-
-function setScene(sceneID) {
-    var sceneToBeSet = sceneAccessories[sceneID];
-    if (document.getElementById(sceneID).classList.contains("on")) {
-
-        sceneToBeSet.forEach(scene => {
-            document.getElementById(scene).classList.add("on");
-            document.getElementById(scene).lastElementChild.innerText = "On";
-        });
-
-    } else {
-
-        sceneToBeSet.forEach(scene => {
-            document.getElementById(scene).classList.remove("on");
-            document.getElementById(scene).lastElementChild.innerText = "Off";
-        });
-    }
 }
