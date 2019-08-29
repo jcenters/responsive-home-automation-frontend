@@ -1,7 +1,6 @@
 // TODO:
 // * Rejigger the data structures so setScene can turn accessories off
-// * Figure out how to make checkScene() update regularly without screwing
-//   up the scene buttons
+// * Figure out how to make checkScene() update regularly without screwing up the scene buttons
 
 var sceneAccessories = {
     "good-morning": ["tv-room-switch", "office-who-lamp", "tv-room-couch-corner", "tv-room-tv-corner", "office-floor-lamp", "great-room-book-case"],
