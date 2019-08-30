@@ -2,7 +2,7 @@
 // * Rejigger the data structures so setScene can turn accessories off
 // * Figure out how to make checkScene() update regularly without screwing up the scene buttons
 
-var sceneAccessories = {
+let sceneAccessories = {
     "good-morning": ["tv-room-switch", "office-who-lamp", "tv-room-couch-corner", "tv-room-tv-corner", "office-floor-lamp", "great-room-book-case"],
     "good-evening": ["bedroom-lamp", "great-room-book-case"],
     "leave-home": ["tv-room-switch"],
@@ -12,11 +12,11 @@ var sceneAccessories = {
     "arrive-home": ["tv-room-switch", "office-who-lamp", "tv-room-couch-corner"],
 }
 
-var homeButtons = document.querySelectorAll(".button");
-var sceneButtons = document.querySelectorAll(".scene");
-var accessoryButtons = document.querySelectorAll(".accessory");
+const HOME_BUTTONS = document.querySelectorAll(".button");
+const SCENE_BUTTONS = document.querySelectorAll(".scene");
+const ACCESSORY_BUTTONS = document.querySelectorAll(".accessory");
 
-homeButtons.forEach(button => {
+HOME_BUTTONS.forEach(button => {
     button.addEventListener("click", function () {
         if (this.classList.contains("accessory") && this.classList.contains("on") && !this.classList.contains("thermostat")) {
             this.lastElementChild.innerText = "Off";
@@ -34,7 +34,7 @@ homeButtons.forEach(button => {
 });
 
 function setScene(sceneID) {
-    var sceneToBeSet = sceneAccessories[sceneID];
+    let sceneToBeSet = sceneAccessories[sceneID];
     if (document.getElementById(sceneID).classList.contains("on")) {
 
         sceneToBeSet.forEach(scene => {
@@ -54,9 +54,9 @@ function checkScene() {
 
     //  This function compares html tags with the classes of "on" and "accessory" against the list of IDs for the given array and turns the scene button on and off depending on whether they match.
 
-    var activeAccessories = [];
+    let activeAccessories = [];
 
-    accessoryButtons.forEach(button => {
+    ACCESSORY_BUTTONS.forEach(button => {
         if (button.classList.contains("on")) {
             activeAccessories.push(button.id);
         }
@@ -64,7 +64,7 @@ function checkScene() {
 
     activeAccessories.sort();
 
-    sceneButtons.forEach(scene => {
+    SCENE_BUTTONS.forEach(scene => {
 
         sceneAccessories[scene.id].sort();
 
