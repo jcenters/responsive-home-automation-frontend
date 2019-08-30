@@ -4,11 +4,11 @@
 
 var sceneAccessories = {
     "good-morning": ["tv-room-switch", "office-who-lamp", "tv-room-couch-corner", "tv-room-tv-corner", "office-floor-lamp", "great-room-book-case"],
-    "good-evening": [],
-    "leave-home": [],
-    "tv-time": [],
-    "good-afternoon": [],
-    "good-night": [],
+    "good-evening": ["bedroom-lamp", "great-room-book-case"],
+    "leave-home": ["tv-room-switch"],
+    "tv-time": ["tv-room-switch"],
+    "good-afternoon": ["tv-room-switch"],
+    "good-night": ["tv-room-switch"],
     "arrive-home": ["tv-room-switch", "office-who-lamp", "tv-room-couch-corner"],
 }
 
@@ -41,7 +41,6 @@ function setScene(sceneID) {
             document.getElementById(scene).classList.add("on");
             document.getElementById(scene).lastElementChild.innerText = "On";
         });
-
     } else {
 
         sceneToBeSet.forEach(scene => {
