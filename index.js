@@ -28,7 +28,7 @@ HOME_BUTTONS.forEach(button => {
             checkScene();
         } else if (this.classList.contains("scene")) {
             this.classList.toggle("on");
-            setScene(this.id);
+            setScene(this.id)
         }
     });
 });
@@ -54,6 +54,8 @@ function checkScene() {
 
     //  This function compares html tags with the classes of "on" and "accessory" against the list of IDs for the given array and turns the scene button on and off depending on whether they match.
 
+    // Get an array of accessories labeled on
+
     let activeAccessories = [];
 
     ACCESSORY_BUTTONS.forEach(button => {
@@ -65,13 +67,14 @@ function checkScene() {
     activeAccessories.sort();
 
     SCENE_BUTTONS.forEach(scene => {
+        let sceneAccessoryList = sceneAccessories[scene.id];
 
-        sceneAccessories[scene.id].sort();
+        sceneAccessoryList.sort();
 
         // This is my crappy workaround to compare the two arrays without writing a ton of extra code.
 
         activeAccessoriesString = activeAccessories.toString();
-        sceneAccessoryString = sceneAccessories[scene.id].toString();
+        sceneAccessoryString = sceneAccessoryList.toString();
 
         if (activeAccessoriesString === sceneAccessoryString) {
             document.getElementById(scene.id).classList.add("on");
